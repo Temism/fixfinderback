@@ -1,10 +1,16 @@
 package com.fixfinder.fixfinderback.Models;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+
 import java.util.List;
 
 
 @Entity
+@Data
+@NoArgsConstructor
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +25,7 @@ public class Usuario {
 
 
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idTipoUsuario")
     private TipoUsuario tipoUsuario; // Tipo de usuario (cliente, especialista)
 
@@ -35,85 +41,7 @@ public class Usuario {
     private List<Especialidad> especialidades; // Especialidades del usuario
 
 
-    public String getApPaterno() {
-        return ApPaterno;
-    }
 
-    public void setApPaterno(String apPaterno) {
-        ApPaterno = apPaterno;
-    }
-
-    public String getApMaterno() {
-        return ApMaterno;
-    }
-
-    public void setApMaterno(String apMaterno) {
-        ApMaterno = apMaterno;
-    }
-
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-
-    public Long getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public TipoUsuario getTipoUsuario() {
-        return tipoUsuario;
-    }
-
-    public void setTipoUsuario(TipoUsuario tipoUsuario) {
-        this.tipoUsuario = tipoUsuario;
-    }
-
-    public List<Reserva> getReservas() {
-        return reservas;
-    }
-
-    public void setReservas(List<Reserva> reservas) {
-        this.reservas = reservas;
-    }
-
-    public List<Especialidad> getEspecialidades() {
-        return especialidades;
-    }
-
-    public void setEspecialidades(List<Especialidad> especialidades) {
-        this.especialidades = especialidades;
-    }
 }
 
 

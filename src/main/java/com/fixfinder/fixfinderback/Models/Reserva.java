@@ -1,11 +1,16 @@
 package com.fixfinder.fixfinderback.Models;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.List;
 
+
 @Entity
+@Data
+@NoArgsConstructor
 public class Reserva {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,75 +45,4 @@ public class Reserva {
     private Pago pago; // Pago asociado a la reserva
 
 
-    public Long getIdReserva() {
-        return idReserva;
-    }
-
-    public void setIdReserva(Long idReserva) {
-        this.idReserva = idReserva;
-    }
-
-    public Date getFechaReserva() {
-        return fechaReserva;
-    }
-
-    public void setFechaReserva(Date fechaReserva) {
-        this.fechaReserva = fechaReserva;
-    }
-
-    public String getEstadoReserva() {
-        return estadoReserva;
-    }
-
-    public void setEstadoReserva(String estadoReserva) {
-        this.estadoReserva = estadoReserva;
-    }
-
-    public String getHoraReserva() {
-        return horaReserva;
-    }
-
-    public void setHoraReserva(String horaReserva) {
-        this.horaReserva = horaReserva;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public Usuario getEspecialista() {
-        return especialista;
-    }
-
-    public void setEspecialista(Usuario especialista) {
-        this.especialista = especialista;
-    }
-
-    public List<Servicio> getServicios() {
-        return servicios;
-    }
-
-    public void setServicios(List<Servicio> servicios) {
-        this.servicios = servicios;
-    }
-
-    public Resena getResena() {
-        return resena;
-    }
-
-    public void setResena(Resena resena) {
-        this.resena = resena;
-    }
-
-    public Pago getPago() {
-        return pago;
-    }
-
-    public void setPago(Pago pago) {
-        this.pago = pago;
-    }
 }
