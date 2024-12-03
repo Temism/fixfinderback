@@ -36,9 +36,5 @@ public class EspecialidadControl{
         return especialidadService.obtenerTodasEspecialidades();
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarEspecialidad(@PathVariable Long id) {
-        especialidadService.eliminarEspecialidad(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
+
 }

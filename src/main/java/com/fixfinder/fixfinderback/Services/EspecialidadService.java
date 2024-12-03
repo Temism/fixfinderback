@@ -26,8 +26,6 @@ public class EspecialidadService {
         return especialidadRepository.findAll();
     }
 
-    public void eliminarEspecialidad(Long id) {
-        especialidadRepository.deleteById(id);
-    }
+
 
 }

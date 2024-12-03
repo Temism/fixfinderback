@@ -17,5 +17,19 @@ public class TipoUsuario {
     private String descripcion; // Ej. "Cliente", "Especialista"
 
 
+    public Long getIdTipoUsuario() {
+        return idTipoUsuario;
+    }
 
+    public void setIdTipoUsuario(Long idTipoUsuario) {
+        this.idTipoUsuario = idTipoUsuario;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 }

@@ -19,7 +19,7 @@ public class UsuarioControl {
     @Autowired
     private UsuarioService usuarioService;
 
-    @PostMapping
+    @PostMapping(consumes = "application/json", produces = "application/json")
     public ResponseEntity<Usuario> crearUsuario(@RequestBody Usuario usuario) {
         return new ResponseEntity<>(usuarioService.guardarUsuario(usuario), HttpStatus.CREATED);
     }
@@ -40,6 +40,14 @@ public class UsuarioControl {
     public ResponseEntity<Void> eliminarUsuario(@PathVariable Long id) {
         usuarioService.eliminarUsuario(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PostMapping("/{id}/asignar-especialidades")
+    public ResponseEntity<Void> asignarEspecialidades(
+            @PathVariable Long id,
+            @RequestBody List<Long> especialidadIds) {
+        usuarioService.asignarEspecialidades(id, especialidadIds);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
 
