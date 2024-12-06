@@ -19,7 +19,7 @@ public class Reserva {
     private Date fechaReserva;
     private String estadoReserva; // Ej. "Pendiente", "Confirmada", "Finalizada"
     private String horaReserva;
-
+    private String motivo;
     @ManyToOne
     @JoinColumn(name = "idUsuario")
     private Usuario usuario; // El usuario que realiza la reserva
@@ -44,6 +44,15 @@ public class Reserva {
     @OneToOne
     @JoinColumn(name = "idPago")
     private Pago pago; // Pago asociado a la reserva
+
+
+    public String getMotivo() {
+        return motivo;
+    }
+
+    public void setMotivo(String motivo) {
+        this.motivo = motivo;
+    }
 
     public Long getIdReserva() {
         return idReserva;

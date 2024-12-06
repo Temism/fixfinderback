@@ -49,5 +49,10 @@ public class UsuarioControl {
         usuarioService.asignarEspecialidades(id, especialidadIds);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping("/{id}/especialidades")
+    public List<String> obtenerEspecialidadesPorUsuario(@PathVariable Long id) {
+        return usuarioService.obtenerEspecialidadesPorUsuario(id);
+    }
 }
 

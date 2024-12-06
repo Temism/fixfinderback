@@ -36,6 +36,10 @@ public class UsuarioService {
     }
 
 
+    public List<String> obtenerEspecialidadesPorUsuario(Long idUsuario) {
+        return usuarioRepository.findEspecialidadesByUsuarioId(idUsuario);
+    }
+
     @Transactional
     public void asignarEspecialidades(Long idUsuario, List<Long> especialidadIds) {
         for (Long idEspecialidad : especialidadIds) {
