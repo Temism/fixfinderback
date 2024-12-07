@@ -1,5 +1,6 @@
 package com.fixfinder.fixfinderback.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,10 +22,12 @@ public class Reserva {
     private String horaReserva;
     private String motivo;
     @ManyToOne
+
     @JoinColumn(name = "idUsuario")
     private Usuario usuario; // El usuario que realiza la reserva
 
     @ManyToOne
+
     @JoinColumn(name = "idEspecialista")
     private Usuario especialista; // El especialista que atiende la reserva
 

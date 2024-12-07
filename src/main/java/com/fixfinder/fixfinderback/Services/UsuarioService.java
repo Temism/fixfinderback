@@ -1,8 +1,10 @@
 package com.fixfinder.fixfinderback.Services;
 
 import com.fixfinder.fixfinderback.Models.Especialidad;
+import com.fixfinder.fixfinderback.Models.Reserva;
 import com.fixfinder.fixfinderback.Models.Usuario;
 import com.fixfinder.fixfinderback.repositorio.EspecialidadRep;
+import com.fixfinder.fixfinderback.repositorio.ReservaRep;
 import com.fixfinder.fixfinderback.repositorio.UsuarioRep;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,8 @@ public class UsuarioService {
 
     @Autowired
     private EspecialidadRep especialidaRep;
+    @Autowired
+    private ReservaRep reservaRep;
 
     public Usuario guardarUsuario(Usuario usuario) {
         return usuarioRepository.save(usuario);
@@ -38,6 +42,10 @@ public class UsuarioService {
 
     public List<String> obtenerEspecialidadesPorUsuario(Long idUsuario) {
         return usuarioRepository.findEspecialidadesByUsuarioId(idUsuario);
+    }
+
+    public List<Reserva> obtenerReservasPorIdUsuario(Long idUsuario) {
+        return usuarioRepository.findReservasByIdUsuario(idUsuario);
     }
 
     @Transactional

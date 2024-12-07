@@ -1,5 +1,6 @@
 package com.fixfinder.fixfinderback.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,7 @@ public class Pago {
     private String estadoPago; // Ej. "Completado", "Pendiente"
 
     @OneToOne(mappedBy = "pago")
+    @JsonIgnore
     private Reserva reserva; // La reserva asociada a este pago
 
     public Long getIdPago() {

@@ -1,6 +1,7 @@
 package com.fixfinder.fixfinderback.Controlador;
 
 
+import com.fixfinder.fixfinderback.Models.Reserva;
 import com.fixfinder.fixfinderback.Models.Usuario;
 import com.fixfinder.fixfinderback.Services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,16 @@ public class UsuarioControl {
     @GetMapping("/{id}/especialidades")
     public List<String> obtenerEspecialidadesPorUsuario(@PathVariable Long id) {
         return usuarioService.obtenerEspecialidadesPorUsuario(id);
+    }
+
+
+    @GetMapping("/{id}/reservas")
+    public ResponseEntity<List<Reserva>> obtenerReservasPorIdUsuario(@PathVariable Long id) {
+        List<Reserva> reservas = usuarioService.obtenerReservasPorIdUsuario(id);
+        if (reservas.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(reservas, HttpStatus.OK);
     }
 }
 

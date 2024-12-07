@@ -1,6 +1,7 @@
 package com.fixfinder.fixfinderback.Models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -33,10 +34,10 @@ public class Usuario {
     private TipoUsuario tipoUsuario; // Tipo de usuario (cliente, especialista)
 
     @OneToMany(mappedBy = "usuario")
+    @JsonIgnore
     private List<Reserva> reservas; // Las reservas realizadas por el usuario
 
     @ManyToMany
-
     @JoinTable(
             name = "usuario_especialidad",
             joinColumns = @JoinColumn(name = "idUsuario"),

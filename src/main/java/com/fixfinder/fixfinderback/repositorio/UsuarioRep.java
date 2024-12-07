@@ -1,5 +1,6 @@
 package com.fixfinder.fixfinderback.repositorio;
 
+import com.fixfinder.fixfinderback.Models.Reserva;
 import com.fixfinder.fixfinderback.Models.Usuario;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -25,5 +26,7 @@ public interface UsuarioRep extends JpaRepository<Usuario,Long> {
     List<String> findEspecialidadesByUsuarioId(@Param("id") Long idUsuario);
 
 
+    @Query("SELECT r FROM Reserva r WHERE r.usuario.idUsuario = :idUsuario")
+    List<Reserva> findReservasByIdUsuario(@Param("idUsuario") Long idUsuario);
 
 }
