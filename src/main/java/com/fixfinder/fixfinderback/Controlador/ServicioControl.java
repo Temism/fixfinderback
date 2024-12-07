@@ -18,21 +18,28 @@ public class ServicioControl {
     @Autowired
     private ServicioService servicioService;
 
-    @PostMapping
-    public ResponseEntity<Servicio> crearServicio(@RequestBody Servicio servicio) {
-        return new ResponseEntity<>(servicioService.guardarServicio(servicio), HttpStatus.CREATED);
+    @PostMapping("/usuario/{idUsuario}")
+    public ResponseEntity<Servicio> crearServicio(@PathVariable Long idUsuario, @RequestBody Servicio servicio) {
+        Servicio nuevoServicio = servicioService.crearServicio(servicio, idUsuario);
+        return new ResponseEntity<>(nuevoServicio, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Servicio> obtenerServicioPorId(@PathVariable Long id) {
-        return servicioService.obtenerServicioPorId(id)
-                .map(servicio -> new ResponseEntity<>(servicio, HttpStatus.OK))
-                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    @GetMapping("/usuario/{idUsuario}")
+    public ResponseEntity<List<Servicio>> obtenerServiciosPorUsuario(@PathVariable Long idUsuario) {
+        List<Servicio> servicios = servicioService.obtenerServiciosPorUsuario(idUsuario);
+        return new ResponseEntity<>(servicios, HttpStatus.OK);
     }
 
     @GetMapping
-    public List<Servicio> obtenerTodosServicios() {
-        return servicioService.obtenerTodosServicios();
+    public ResponseEntity<List<Servicio>> obtenerTodosServicios() {
+        List<Servicio> servicios = servicioService.obtenerTodosServicios();
+        return new ResponseEntity<>(servicios, HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Servicio> actualizarServicio(@PathVariable Long id, @RequestBody Servicio servicio) {
+        Servicio servicioActualizado = servicioService.actualizarServicio(id, servicio);
+        return new ResponseEntity<>(servicioActualizado, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

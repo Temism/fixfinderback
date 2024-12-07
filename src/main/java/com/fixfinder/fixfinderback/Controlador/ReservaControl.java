@@ -23,6 +23,22 @@ public class ReservaControl {
         return new ResponseEntity<>(reservaService.guardarReserva(reserva), HttpStatus.CREATED);
     }
 
+    @PatchMapping("/{id}/estado")
+    public ResponseEntity<Reserva> actualizarEstadoReserva(
+            @PathVariable Long id,
+            @RequestParam String estado) {
+        try {
+            Optional<Reserva> reservaExistente = reservaService.obtenerReservaPorId(id);
+            if (reservaExistente.isPresent()) {
+                Reserva reserva = reservaExistente.get();
+                reserva.setEstadoReserva(estado);
+                return new ResponseEntity<>(reservaService.guardarReserva(reserva), HttpStatus.OK);
+            }
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
     @GetMapping("/{id}")
     public ResponseEntity<Reserva> obtenerReservaPorId(@PathVariable Long id) {
         return reservaService.obtenerReservaPorId(id)

@@ -44,6 +44,14 @@ public class UsuarioService {
         return usuarioRepository.findEspecialidadesByUsuarioId(idUsuario);
     }
 
+
+    public List<Reserva> getReservasByEspecialista(Long idEspecialista) {
+        return usuarioRepository.findReservasByIdEspecialista(idEspecialista);
+    }
+
+
+
+
     public List<Reserva> obtenerReservasPorIdUsuario(Long idUsuario) {
         return usuarioRepository.findReservasByIdUsuario(idUsuario);
     }

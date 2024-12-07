@@ -15,7 +15,29 @@ public class Servicio {
 
     private String nombreServicio;
     private String descripcionServicio;
-    private Double valorServicio;
+    private int valorServicio;
+    private String horario;
+
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "idUsuario")
+    private Usuario usuario;
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getHorario() {
+        return horario;
+    }
+
+    public void setHorario(String horario) {
+        this.horario = horario;
+    }
 
     public Long getIdServicio() {
         return idServicio;
@@ -41,11 +63,11 @@ public class Servicio {
         this.descripcionServicio = descripcionServicio;
     }
 
-    public Double getValorServicio() {
+    public int getValorServicio() {
         return valorServicio;
     }
 
-    public void setValorServicio(Double valorServicio) {
+    public void setValorServicio(int valorServicio) {
         this.valorServicio = valorServicio;
     }
 }

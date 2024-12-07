@@ -27,7 +27,9 @@ public class Usuario {
     private String contrasena;
     private int Calificacionprom;
 
-
+    @OneToMany(mappedBy = "usuario")
+    @JsonIgnore
+    private List<Servicio> serviciosOfrecidos;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idTipoUsuario")
@@ -45,6 +47,13 @@ public class Usuario {
     )
     private List<Especialidad> especialidades; // Especialidades del usuario
 
+    public List<Servicio> getServiciosOfrecidos() {
+        return serviciosOfrecidos;
+    }
+
+    public void setServiciosOfrecidos(List<Servicio> serviciosOfrecidos) {
+        this.serviciosOfrecidos = serviciosOfrecidos;
+    }
 
     public Long getIdUsuario() {
         return idUsuario;

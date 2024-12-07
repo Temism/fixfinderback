@@ -65,5 +65,16 @@ public class UsuarioControl {
         }
         return new ResponseEntity<>(reservas, HttpStatus.OK);
     }
+
+    @GetMapping("/esp/{id}/reservas")
+    public ResponseEntity<List<Reserva>> getReservasByEspecialista(@PathVariable Long id) {
+        List<Reserva> reservas = usuarioService.getReservasByEspecialista(id);
+        if (reservas.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(reservas);
+    }
+
+
 }
 

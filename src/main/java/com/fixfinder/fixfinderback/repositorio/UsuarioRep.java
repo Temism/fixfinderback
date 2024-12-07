@@ -29,4 +29,8 @@ public interface UsuarioRep extends JpaRepository<Usuario,Long> {
     @Query("SELECT r FROM Reserva r WHERE r.usuario.idUsuario = :idUsuario")
     List<Reserva> findReservasByIdUsuario(@Param("idUsuario") Long idUsuario);
 
+    @Query("SELECT r FROM Reserva r WHERE r.especialista.idUsuario = :idEspecialista")
+    List<Reserva> findReservasByIdEspecialista(@Param("idEspecialista") Long idEspecialista);
+
+
 }

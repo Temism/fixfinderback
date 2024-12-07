@@ -31,8 +31,7 @@ public class Reserva {
     @JoinColumn(name = "idEspecialista")
     private Usuario especialista; // El especialista que atiende la reserva
 
-    @ManyToMany
-
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "reserva_servicio",
             joinColumns = @JoinColumn(name = "idReserva"),

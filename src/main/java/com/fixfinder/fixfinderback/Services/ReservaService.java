@@ -29,6 +29,19 @@ public class ReservaService {
         return reservaRepository.findById(id);
     }
 
+    public Reserva actualizarReserva(Long id, Reserva reservaActualizada) {
+        return reservaRepository.findById(id)
+                .map(reservaExistente -> {
+                    reservaExistente.setFechaReserva(reservaActualizada.getFechaReserva());
+                    reservaExistente.setHoraReserva(reservaActualizada.getHoraReserva());
+                    reservaExistente.setEstadoReserva(reservaActualizada.getEstadoReserva());
+                    reservaExistente.setMotivo(reservaActualizada.getMotivo());
+                    // No actualizamos usuario ni especialista para mantener la integridad
+                    return reservaRepository.save(reservaExistente);
+                })
+                .orElseThrow(() -> new RuntimeException("Reserva no encontrada con id: " + id));
+    }
+
     public List<Reserva> obtenerTodasReservas() {
         return reservaRepository.findAll();
     }
