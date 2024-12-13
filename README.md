@@ -1,5 +1,7 @@
-#este proyecto esta dentinado a un proyecto del instituto
-este proyecto consta de 2 partes el back-end desarrollado con spring boot y con una base de datos mysql 
-y la segunda parte consiste en el front-end desarrollado con angular y utilizando bootstrap
+Este proyecto fue desarrollado como parte de la evaluación final de una asignatura de la carrera de Ingeniería en Informática. Consta de dos partes: Back-end y Front-end.
 
-para el correcto funcionamiento se debe poseer credenciales de base de datos usuario: root y la contraseña: 1234
+El Back-end fue implementado utilizando Spring Boot con el lenguaje Java y una base de datos MySQL.
+
+Para su correcto funcionamiento, es necesario tener MySQL instalado en el equipo. Además, se deben configurar las credenciales de acceso en el archivo application.properties.
+
+Al inicializar el proyecto, se generará automáticamente una base de datos llamada arqback, con sus respectivas tablas, relaciones y algunas inserciones iniciales en la base de datos.
